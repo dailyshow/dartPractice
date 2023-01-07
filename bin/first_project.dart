@@ -1,5 +1,6 @@
 import 'package:first_project/first_project.dart' as first_project;
 
+import 'Car2.dart';
 import 'User.dart';
 
 void main(List<String> arguments) {
@@ -71,8 +72,40 @@ void main(List<String> arguments) {
   // 생성자에 반드시 입력 받아야 하면 required 를 사용한다.
 
   // private 접근 제어
-  User user = User();
+  // User user = User();
   // print("user : ${user.name}"); // private 하기 전에는 접근 가능함. 하지만 User class 에서 member 변수를 private 으로 지정(_사용) 하면 접근 안됨.
+
+  // User user = User(name: "newCis", isFemale: false);
+
+  // assertion test 에 사용한 내용
+  // User user1 = User(name: "", isFemale: false); // name 을 비우고 실행하면 Unhandled exception 가 발생함
+  // User user2 = User(
+  //     name: "cis",
+  //     isFemale: false,
+  //     age: 0); // age 를 0으로 넣고 실행하면 Unhandled exception 가 발생함
+
+  // object
+  Car2 newCar = Car2();
+  print("wheels : ${newCar.wheels}");
+  Car2 newCar2 = newCar;
+
+  print("newCar2.wheels - ${newCar2.wheels}"); // 4
+  newCar.wheels = 10;
+  print("newCar2.wheels after - ${newCar2.wheels}"); // 10
+  // newCar 와 newCar2 가 바라보는 인스턴스가 동일하기 때문에 newCar의 wheels 값을 변경했으나 newCar2 의 wheels 값이 변경되어 출력됨을 볼 수 있음
+
+  // getter setter
+  Car2 car3 = Car2();
+  int wheels = car3.wheels;
+  print("car wheels : $wheels");
+
+  car3.wheels = 10;
+  int newWheels = car3.wheels;
+  print("car wheels : $newWheels");
+
+  car3.setWheels(20);
+  int newWheels2 = car3.wheels;
+  print("car wheels : $newWheels2");
 }
 
 // enum
